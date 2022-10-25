@@ -1,0 +1,139 @@
+/* nejsme vcerejsi, pouzivame moderni box model */
+*, :after, :before { box-sizing: border-box; }
+
+body {
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+h1 {
+	text-align: center;
+}
+
+/* nastavíme vlastnosti obdélníčku, které jsou společné pro všechny osoby ve všech breakpointech - každá vizitka má rámeček, stín, kulaté rohy a odsazení obsahu od okraje 20px */
+.osoba {
+  padding: 20px;
+	border: 1px solid #d5d5d5;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 255, 255, 0.15);
+}
+
+/* velikost jména uvnitř vizitky */
+.popis h2 {
+	font-size: 18px;
+}
+
+/* velikost popisu osoby uvnitř vizitky */
+.popis p {
+	margin-bottom: 0;
+}
+
+/* ---------------------------------------------------- */
+
+
+
+/* varianta vizitky pro mobil - nemusíme nastavovat žádný flexbox, <div>y jsou přirozeně přes celou šířku stránky a jsou pod sebou, což chceme */
+.osoba {
+	/* v mobilní verzi je vše uvnitř vizitky zarovnané na střed */
+	text-align: center;
+
+	/* pod vizitkou je mezera, aby nebyly nalepené těsně na sebe */
+	margin-bottom: 20px;
+}
+
+.foto img {
+	/* fotky jsou kulaté */
+	border-radius: 50%;
+}
+
+
+
+/* tablet */
+@media (min-width: 600px) {
+
+	.tym {
+		/* na tabletu mají být vizitky vždy 2 vedle sebe ve dvou řadách. všechny 4 jsou dohromady v jednom divu, takže z divu uděláme flexbox ...*/
+		display: flex;
+
+		/* a nastavíme wrap, abychom mohli řádek vizitek zalomit do druhého řádku */
+		flex-wrap: wrap;
+
+		/* v rámci řádku nastavíme pomocí space-between, že vizitky budou přilepené k levému a pravému okraji rodiče a mezi nimi bude mezera (pokud to nastavení šířky vizitky dovolí, o což se postaráme) */
+		justify-content: space-between;
+	}
+
+	.osoba {
+		/* chceme 2 vizitky vedle sebe, ale nemůžeme říct, že šířka je 50%, protože to by mezi nimi nebyla mezera. Chceme mezi nimi mezeru 20px, takže pomocí calc odečteme 20px od 100% a celé to vydělíme 2, címž spočítáme potřebnou šířku vizitky */
+		width: calc( (100% - 20px) / 2 );
+
+		/* vizitka na tabletu má fotku a text vedle sebe, takže z vizitky uděláme flexbox */
+		display: flex;
+
+		/* na mobilu byl text zarovnaný na střed, což tady nechceme, takže musíme přenastavit zpět na zarovnání vlevo */
+		text-align: left;
+	}
+
+	.foto {
+		/* v rámci flexboxu vizitky chceme, aby div obalující fotku byl široký 80px a neměnil velikost */
+		flex: 0 0 80px;
+
+		/* a je vedle ní 20px odsazení od textu vpravo */
+		margin-right: 20px;
+	}
+
+	.foto img {
+		/* fotku nastavíme tak, aby se roztahovala na šířku sloupce, ve kterém se nachází */
+		width: 100%;
+	}
+
+}
+
+
+
+
+/* desktop */
+@media (min-width: 1000px) {
+
+	.tym {
+		/*
+			Z tabletové verze stále platí, že .tym je nastavený na flexbox,
+			takže to yde nemusíme zapínat a měnit.
+			Na tabletu ale byl zapnutý wrap, což nyní nechceme. V desktop verzi
+			mají být všechny vizitky v jedné řadě vedle sebe, takže musíme
+			wrap zase vypnout.
+		*/
+		flex-wrap: nowrap;
+	}
+
+	.osoba {
+		/*
+			šířka jedné vizitky - před vydělením čtyřmi nejprve od 100 % odečteme 60px,
+			tj. mezi čtyřmi vizitkami jsou 3 mezery, takže až zafunguje
+			justify-content: space-between (nastavený už v tabletové verzi), rozstrká vizitky
+			v pravidelných intervalech od sebe a mezi každou bude 20px rozestup.
+		*/
+		width: calc( (100% - 60px) / 4 );
+
+		/*
+			V tabletové verzi jsem vizitku přepli na flex, abychom mohli dát fotku a text
+			vedle sebe. Na desktopové verzi chceme mít fotku a text uvnitř vizitky opět pod
+			sebou, takže vizitku přepneme zpět na normální blok.
+			Mohli bychom ji nechat na flex a nastavit flex-direction: column, ale pokud to
+			není nutné, netrápímě prohlížeč zbytečnými flexboxy. Výpočet flexboxu je náročný
+			a to stránku zpomaluje. Flexboxů se nebojíme a používáme je kdekoliv, ale když
+			nejsou vyloženě potřeba, preferujeme klasický block (na výpočet/vykreslení rychlejší).
+		*/
+		display: block;
+
+		/* text je v této verzi ve vizitce opět zarovnaný na střed */
+		text-align: center;
+	}
+
+	.foto {
+		margin: 0;
+	}
+
+	.foto img {
+		width: auto;
+	}
+}
