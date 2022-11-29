@@ -1,0 +1,178 @@
+/* nejsme vcerejsi, pouzivame moderni a intuitivni box model */
+html { box-sizing: border-box; }
+*, ::after, ::before { box-sizing: inherit; }
+
+body {
+    text-rendering: optimizeLegibility;
+}
+
+/*
+ BARVY
+ svetle sede pozadi      #f5f5f5
+ tmavsi seda             #959595
+ barevny prechod nahore  #06d7c1
+ barevny prechod dole    #50cc49
+ zelena cara             #06d7c1
+ oranzova                #f15f42
+
+ POUZITE PISMO
+ Rubik - rezy pisma regular 400 a medium 500
+ https://fonts.google.com/specimen/Rubik
+*/
+
+
+/* ----- zde zacni psat vlastni css ----- */
+
+body {
+    background-color: #f5f5f5;
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.zbozi {
+    width: 670px;
+    height: 440px;
+	margin: 100px auto; /* cely ramecek bude uprostred stranky odsazeny 100px od horniho (a dolniho) okraje okna */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* leva polovina */
+.vizual {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding: 30px;
+    background-image: linear-gradient(to bottom, #06d7c1, #50cc49);
+    border-radius: 10px 0 0 10px;
+}
+
+/* prava polovina */
+.detaily {
+    position: relative;
+    height: 100%;
+    margin-left: 50%;
+    padding: 30px;
+}
+
+
+/* === OBSAH LEVE POLOVINY S FOTKOU PORDUKTU === */
+
+.slogan {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
+
+.bota {
+    position: absolute;
+    left: -80px;
+    bottom: 0;
+}
+
+.cenovka {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    text-align: right;
+    color: white;
+}
+
+.cena {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.zaruka {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+/* === PRAVA POLOVINA S POPISEM PRODUKTU === */
+
+.nazev {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.produkt {
+    line-height: 1;
+    color: #959595;
+}
+
+.popis {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    line-height: 1.4;
+    border-bottom: 1px solid #06d7c1;
+}
+
+.parametr {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.velikosti {
+    margin: 0;
+    padding: 0;
+}
+
+.velikosti li {
+    margin: 0 10px 0 0;
+    padding: 0;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.velikosti li:hover,
+.velikosti li:active,
+.velikosti li:focus,
+.velikosti li.vybrana {
+    font-weight: 500;
+    color: #f15f42;
+    border: 1px solid #f15f42;
+}
+
+.akce {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+}
+
+.tlacitko {
+    display: block;
+    padding: 18px 30px 14px 30px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    background-color: #f15f42;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.tlacitko:hover,
+.tlacitko:active,
+.tlacitko:focus {
+	background-color: #d54c31;
+}
