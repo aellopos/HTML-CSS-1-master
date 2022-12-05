@@ -1,0 +1,29 @@
+/* BOX MODEL - nastavíme intuitivnější box model (border-box) */
+html { box-sizing: border-box; }
+*, *:after, *:before { box-sizing: inherit; }
+
+/*
+CLEARFIX - tohle nám pomůže, až budeme dělat fotogalerii
+pro bližší vysvětlení, co je float a clearfix si přečti třeba:
+https://css-tricks.com/all-about-floats/
+https://css-tricks.com/snippets/css/clear-fix/
+*/
+.clearfix {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/*
+Bootstrap breakpointy: 768, 992, 1200
+xs: (max-width: 767px)
+sm: (min-width: 768px) and (max-width: 991px)
+md: (min-width: 992px) and (max-width: 1199px)
+lg: (min-width: 1200px)
+
+Barvy
+růžová: #c5308a
+světle šedá: #f0f0f0
+*/
+
+/* --- pod tuto čáru piš svoje CSS --------------------------------------- */
