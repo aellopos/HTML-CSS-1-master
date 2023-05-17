@@ -1,0 +1,43 @@
+/* nejsme vcerejsi, pouzivame moderni box model */
+*, :after, :before { box-sizing: border-box; }
+
+body {
+	font-family: sans-serif;
+}
+
+
+.blok {
+    padding: 20px;
+}
+
+.horni { background-color:#f1c40f ;}
+.prvni { background-color: #2ecc71;}
+.druhy { background-color: #e74c3c;}
+.treti { background-color: #8e44ad;}
+
+/* ---------------------------------------------------- */
+
+@media (min-width: 480px) {
+    .kontejner {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .horni,
+    .treti {
+        flex: 1 1 100%;
+    }
+
+    .prvni,
+    .druhy {
+        flex: 1 1 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .prvni,
+    .druhy,
+    .treti {
+        flex: 1 1 33.3333%;
+    }
+}
